@@ -21,5 +21,47 @@
               "ignoreFailures": true
             }],
         "args": ["../pbrt-v4-scenes/barcelona-pavilion/pavilion-day.pbrt", "-nthreads" ,"1"],
-        "request": "launch"}],
+        "request": "launch"},
+
+        {
+          "name": "tests",
+          "type": "cppdbg",
+          "cwd": "${workspaceFolder}",
+          "program": "${workspaceFolder}/build/pbrt_test",
+          "stopAtEntry": false,
+          "externalConsole": false,
+          // "logging": {
+          //     "moduleLoad": false,
+          //     "trace": true
+          // },
+          "setupCommands": [
+              {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+              }],
+          "args": ["-nthreads" ,"1", "--test_filter", "Bounds2.Iterator*"],
+          "request": "launch"
+        },
+        {
+          "name": "exercises",
+          "type": "cppdbg",
+          "cwd": "${workspaceFolder}",
+          "program": "${workspaceFolder}/build/pbrt_exercises",
+          "stopAtEntry": false,
+          "externalConsole": false,
+          // "logging": {
+          //     "moduleLoad": false,
+          //     "trace": true
+          // },
+          "setupCommands": [
+              {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+              }],
+          "args": ["-nthreads" ,"1"],
+          "request": "launch"
+        }
+      ],
 }

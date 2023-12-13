@@ -1089,6 +1089,54 @@ add_test (pbrt_unit_test pbrt_test)
 
 set_property (TARGET pbrt_test PROPERTY FOLDER "cmd")
 
+##################
+# Exercises
+
+set (PBRT_TEST_SOURCE
+  src/pbrt/bsdfs_test.cpp
+  src/pbrt/filters_test.cpp
+  src/pbrt/lights_test.cpp
+  src/pbrt/lightsamplers_test.cpp
+  src/pbrt/media_test.cpp
+  src/pbrt/parser_test.cpp
+  src/pbrt/samplers_test.cpp
+  src/pbrt/shapes_test.cpp
+
+  src/pbrt/cpu/integrators_test.cpp
+
+  src/pbrt/util/args_test.cpp
+  src/pbrt/util/buffercache_test.cpp
+  src/pbrt/util/color_test.cpp
+  src/pbrt/util/containers_test.cpp
+  src/pbrt/util/file_test.cpp
+  src/pbrt/util/float_test.cpp
+  src/pbrt/util/hash_test.cpp
+  src/pbrt/util/image_test.cpp
+  src/pbrt/util/math_test.cpp
+  src/pbrt/util/parallel_test.cpp
+  src/pbrt/util/print_test.cpp
+  src/pbrt/util/pstd_test.cpp
+  src/pbrt/util/rng_test.cpp
+  src/pbrt/util/sampling_test.cpp
+  src/pbrt/util/spectrum_test.cpp
+  src/pbrt/util/splines_test.cpp
+  src/pbrt/util/string_test.cpp
+  src/pbrt/util/taggedptr_test.cpp
+  src/pbrt/util/transform_test.cpp
+  src/pbrt/util/vecmath_test.cpp
+  )
+
+add_executable (pbrt_exercises src/pbrt/cmd/exercises_02.cpp ${PBRT_TEST_SOURCE})
+
+target_link_libraries (pbrt_exercises PRIVATE ${ALL_PBRT_LIBS} pbrt_opt pbrt_warnings)
+target_compile_definitions (pbrt_exercises PRIVATE ${PBRT_DEFINITIONS})
+target_include_directories (pbrt_exercises PRIVATE src src/ext ${DOUBLE_CONVERSION_INCLUDE})
+target_compile_options(pbrt_exercises PUBLIC ${PBRT_CXX_FLAGS})
+
+add_sanitizers (pbrt_exercises)
+
+set_property (TARGET pbrt_exercises PROPERTY FOLDER "cmd")
+
 ###############################
 # Installation
 
